@@ -1,0 +1,220 @@
+﻿@using BootCoinApp.ViewModels
+@model IndexHomeViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h4>User Summmary</h4>
+            <span class="text-gray">@Model.usersCount interns</span>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+            <button type="button"
+                    class="btn btn-success rounded-5 align-self-center"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalInputCoinPerGroup">
+                INPUT COIN PER GROUP
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-hover w-100" style="empty-cells: show;">
+            <thead>
+                <tr>
+                    <th class="col-md-4">Name</th>
+                    <th class="col-md-2">Bootcoins</th>
+                    <th class="col-md-4">Position</th>
+                    <th class="col-md-1">Group</th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody class="overflow-auto d-block container w-100" style="height : 60vh;">
+                @foreach (var user in Model.users)
+                {
+                    <tr class="w-100">
+                        <td class="align-middle col-md-4">
+                            <div class="d-flex align-items-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                     alt="Avatar"
+                                     class="rounded-circle"
+                                     width="30"
+                                     height="30" />
+                                <span class="ms-2">@user.UserName</span>
+                            </div>
+                        </td>
+                        <td class=" align-middle col-md-2">
+                            <span class="badge bg-success rounded-pill">@user.BootCoin</span>
+                        </td>
+                        <td class="align-middle col-md-4">
+                            <span class="badge bg-primary rounded-pill">@user.Position.PositionName</span>
+                        </td>
+                        <td class="align-middle col-md-1">
+                            <span class="badge bg-warning rounded-pill">@user.Group.GroupName</span>
+                        </td>
+                        <td class="align-middle col-md-1">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalInputCoinPerUser">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="16"
+                                     height="16"
+                                     fill="currentColor"
+                                     class="bi bi-plus-circle"
+                                     viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal" id="modalInputCoinPerUser" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <img src="" alt="Logo Here" />
+                    <p>Nama</p>
+                </div>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Input Coin</h2>
+
+                <form action="Admin/InputCoinPerUser" method="post">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="inputTotalCoins"
+                                   class="form-label">Total Coins</label>
+                            <input class="form-control"
+                                   type="number"
+                                   name="totalCoins"
+                                   id="inputTotalCoins"
+                                   min="1" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEvents" class="form-label">Events</label>
+                            <select class="d-block"
+                                    style="width: 100%"
+                                    name="events"
+                                    id="inputEvents">
+                                <option value="Event Category">
+                                    Event Category
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-5">
+                            <label for="inputActiveness"
+                                   class="form-label">Activeness</label>
+                            <select class="d-block"
+                                    style="width: 100%"
+                                    name="activeness"
+                                    id="inputActiveness">
+                                <option value="Barely Active">
+                                    Barely Active
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-between">
+                            <button type="reset"
+                                    class="btn btn-danger rounded-5">
+                                Reset
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-success rounded-5">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalInputCoinPerGroup" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <img src="" alt="Logo Here" />
+                </div>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Input Coin by Group</h2>
+
+                <form action="Admin/InputCoinPerGroup" method="post">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="inputGroup" class="form-label">Group</label>
+                            <select class="d-block"
+                                    style="width: 100%"
+                                    name="group"
+                                    id="inputGroup">
+                                <option value="A">Group A</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputTotalCoins"
+                                   class="form-label">Total Coins</label>
+                            <input class="form-control"
+                                   type="number"
+                                   name="totalCoins"
+                                   id="inputTotalCoins"
+                                   min="1" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEvents" class="form-label">Events</label>
+                            <select class="d-block"
+                                    style="width: 100%"
+                                    name="events"
+                                    id="inputEvents">
+                                <option value="Event Category">
+                                    Event Category
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-5">
+                            <label for="inputActiveness"
+                                   class="form-label">Activeness</label>
+                            <select class="d-block"
+                                    style="width: 100%"
+                                    name="activeness"
+                                    id="inputActiveness">
+                                <option value="Barely Active">
+                                    Barely Active
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-between">
+                            <button type="reset"
+                                    class="btn btn-danger rounded-5">
+                                Reset
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-success rounded-5">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

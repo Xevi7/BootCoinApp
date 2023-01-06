@@ -1,0 +1,80 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*custom scrollbar*/
+/* width */
+::-webkit-scrollbar {
+    width:8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Rules for sizing the material design icons */
+.material-icons.md-44 {
+    font-size: 44px;
+}
+
+.left-section {
+    background-color: #096238;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.right-section {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.shadow {
+    box-shadow: 0px 0px 20px rgba(9, 98, 56, 0.25) !important;
+}
+
+.support-answer {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #000000;
+}
+
+/*account register and login*/
+.custom-bg {
+    width: 67vw;
+}
+
+.account-card {
+    top: 50vh;
+    left: 50vw;
+    width: 35vw;
+    height: 85vh;
+}

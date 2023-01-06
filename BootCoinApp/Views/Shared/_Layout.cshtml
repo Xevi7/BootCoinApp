@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BootCoinApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BootCoinApp.styles.css" asp-append-version="true" />
+</head>
+<body class="m-0">
+
+    <div class="row g-0">
+        <div class="col-3 min-vh-100 left-section">
+            <div class="h-100">
+                <div style="height:87%;" class="pt-5 text-center">
+                    <img alt="user_picture" />
+                    <p>Hello @User.Identity?.Name!</p>
+                </div>
+                <div style="height:10%; margin-top:auto;" class="text-center">
+                    <a class="text-decoration-none text-white" style="vertical-align:middle" asp-area="" asp-controller="Account" asp-action="Logout">Sign Out</a>
+                    <span class="material-icons md-44" style="vertical-align:middle">logout</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-9 right-section">
+            <main role="main" class="m-0">
+                <div class="container-fluid px-5">
+                    <header>
+                        <nav class="navbar navbar-expand navbar-light mt-4 mb-5" style="font-size:24px; font-weight:400;">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse">
+                                    <ul class="navbar-nav ms-auto mb-lg-0">
+                                        <li class="=nav-item me-5">
+                                            <a class="nav-link" style="color:#414141;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                        </li>
+                                        <li class="nav-item ms-5">
+                                            <a class="nav-link" style="color:#414141;" asp-area="" asp-controller="User" asp-action="Support">Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </header>
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
