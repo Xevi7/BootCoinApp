@@ -42,11 +42,11 @@ namespace BootCoinApp.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    TempData["Error"] = "Invalid Login Attemp";
+                    TempData["Error"] = "Invalid Login Attempt";
                     return View(loginViewModel);
                 }
             }
-            TempData["Error"] = "Invalid Login Attemp";
+            TempData["Error"] = "Invalid Login Attempt";
             return View(loginViewModel);
         }
 

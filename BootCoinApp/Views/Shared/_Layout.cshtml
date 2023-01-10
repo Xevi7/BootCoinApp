@@ -4,17 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BootCoinApp</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BootCoinApp.styles.css" asp-append-version="true" />
 </head>
 <body class="m-0">
-
     <div class="row g-0">
         <div class="col-3 min-vh-100 left-section">
             <div class="h-100">
                 <div style="height:87%;" class="pt-5 text-center">
-                    <img alt="user_picture" />
+                    @*<img alt="user_picture" />*@
+                    <svg width="206" height="196" viewBox="0 0 246 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="123" cy="118" rx="123" ry="118" fill="#D9D9D9" />
+                        <path d="M122.154 136.825C155.111 136.825 182.924 141.788 182.924 160.937C182.924 180.094 154.929 184.881 122.154 184.881C89.2049 184.881 61.3848 179.918 61.3848 160.769C61.3848 141.612 89.3797 136.825 122.154 136.825ZM122.154 44.0801C144.48 44.0801 162.369 60.6525 162.369 81.3293C162.369 102.006 144.48 118.586 122.154 118.586C99.836 118.586 81.9402 102.006 81.9402 81.3293C81.9402 60.6525 99.836 44.0801 122.154 44.0801Z" fill="white" />
+                    </svg>
                     <p>Hello @User.Identity?.Name!</p>
                 </div>
                 <div style="height:10%; margin-top:auto;" class="text-center">
@@ -31,13 +35,36 @@
                         <nav class="navbar navbar-expand navbar-light mt-4 mb-5" style="font-size:24px; font-weight:400;">
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse">
-                                    <ul class="navbar-nav ms-auto mb-lg-0">
-                                        <li class="=nav-item me-5">
-                                            <a class="nav-link" style="color:#414141;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                        </li>
-                                        <li class="nav-item ms-5">
-                                            <a class="nav-link" style="color:#414141;" asp-area="" asp-controller="User" asp-action="Support">Support</a>
-                                        </li>
+                                    <div class="input-group w-25" style="border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-transparent border-0 search-text-box-icon h-100" id="inputGroup-sizing-default">
+                                                <span class="material-icons" style="font-size: 30px;">search</span>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control border-0 search-text-box" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search">
+                                    </div>
+                                    <ul id="navbar-list" class="navbar-nav ms-auto mb-lg-0">
+                                        @if (User.IsInRole("admin"))
+                                        {
+                                            <li class="=nav-item">
+                                                <a id="index" class="nav-link" style="color:#414141;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                            </li>
+                                            <li class="nav-item ms-5">
+                                                <a id="input" class="nav-link" style="color:#414141;" asp-area="" asp-controller="Admin" asp-action="Input">Input</a>
+                                            </li>
+                                            <li class="nav-item ms-5">
+                                                <a id="history" class="nav-link" style="color:#414141;" asp-area="" asp-controller="Admin" asp-action="History">History</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="=nav-item me-5">
+                                                <a id="index" class="nav-link" style="color:#414141;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                            </li>
+                                            <li class="nav-item ms-5">
+                                                <a id="support" class="nav-link" style="color:#414141;" asp-area="" asp-controller="User" asp-action="Support">Support</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>

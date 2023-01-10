@@ -17,6 +17,32 @@ body {
   margin-bottom: 60px;
 }
 
+.left-section {
+    background-color: #096238;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.right-section {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.left-section .bootcoin-title {
+    position: absolute;
+    top: 50%;
+    left: 25vw;
+    transform: translate(-50%, -50%);
+    font-size: 56px;
+    font-weight: 600;
+}
+
+/*account register and login*/
+.custom-bg {
+    width: 67vw;
+}
+
 /*custom scrollbar*/
 /* width */
 ::-webkit-scrollbar {
@@ -40,23 +66,17 @@ body {
     background: #555;
 }
 
-/* Rules for sizing the material design icons */
-.material-icons.md-44 {
-    font-size: 44px;
+.text-gray {
+    color: #B5B5C3;
 }
 
-.left-section {
-    background-color: #096238;
-    color: #FFFFFF;
-    font-weight: 600;
+.login-register-card {
+    border-radius: 20px;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
+    font-weight: 400;
 }
 
-.right-section {
-    background-color: #FFFFFF;
-    color: #000000;
-}
-
-.shadow {
+#support-accordion .shadow {
     box-shadow: 0px 0px 20px rgba(9, 98, 56, 0.25) !important;
 }
 
@@ -67,14 +87,99 @@ body {
     color: #000000;
 }
 
-/*account register and login*/
-.custom-bg {
-    width: 67vw;
-}
-
 .account-card {
     top: 50vh;
     left: 50vw;
     width: 35vw;
     height: 85vh;
+}
+.account-card .card-body {
+    padding: 10vh 3vw 20vh 3vw;
+}
+
+.account-card .form-group label {
+    font-size: 16px;
+}
+
+.account-card .form-group input {
+    background-color: rgba(131, 131, 131, 0.2);
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+    background-position: 100%;
+    background-repeat: no-repeat;
+}
+
+.modal-dialog form label {
+    font-size: 16px;
+}
+.modal-dialog form input {
+    background-color: rgba(131, 131, 131, 0.2);
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+}
+.modal-dialog form select {
+    background-color: rgba(131, 131, 131, 0.2);
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+.button {
+    background-color: #6CA589;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 24px;
+}
+
+.button-red {
+    background-color: #DC3545;
+}
+
+.table-fixed-header {
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #F3F6F9;
+    color: #000000;
+    border-radius: 6px;
+}
+
+.table-fixed-body {
+    color: #464E5F;
+}
+
+.table-fixed-body span.small-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.table-fixed-body span.large-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.input-modal .modal-dialog {
+    width: 100%;
+    max-width: 650px;
+}
+
+.input-modal .modal-content {
+    border-radius: 20px;
+    border: 0px;
+    padding: 30px 30px 40px 30px;
+}
+
+#navbar-list .nav-link:hover {
+    transform: scale(1.05)
 }
