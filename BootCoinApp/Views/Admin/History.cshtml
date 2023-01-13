@@ -2,12 +2,13 @@
 @model IEnumerable<Transaction>
 @{
     ViewData["Title"] = "History";
+    ViewData["SearchAction"] = "History";
 }
 
 <div class="row mb-3">
     <div class="col-8 mb-3" style="font-weight: 500;">
-        <span class="d-inline-block w-100 mb-1" style="color: #212121; font-size: 18px;">USER SUMMARY</span>
-        <span class="d-inline-block w-100 text-gray" style="font-size: 12px;">30 Interns</span>
+        <span class="d-inline-block w-100 mb-1" style="color: #212121; font-size: 18px;">TRANSACTION SUMMARY</span>
+        <span class="d-inline-block w-100 text-gray" style="font-size: 12px;">@Model.Count() Transactions</span>
     </div>
     <div class="col-4 mb-3 d-flex justify-content-end">
         <a type="button" class="btn btn-success border-0 button py-2 px-4 align-self-center" asp-controller="Admin" asp-action="Export">

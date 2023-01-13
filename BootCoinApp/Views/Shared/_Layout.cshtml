@@ -38,14 +38,16 @@
                         <nav class="navbar navbar-expand navbar-light mt-4 mb-5" style="font-size:24px; font-weight:400;">
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse">
-                                    <div class="input-group w-25" style="border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-transparent border-0 search-text-box-icon h-100" id="inputGroup-sizing-default">
-                                                <span class="material-icons" style="font-size: 30px;">search</span>
-                                            </span>
+                                    <form class="w-25" asp-action="@(ViewData["SearchAction"])" method="get">
+                                        <div class="input-group" style="border-radius: 15px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-transparent border-0 search-text-box-icon h-100" id="inputGroup-sizing-default">
+                                                        <span class="material-icons" style="font-size: 30px;">search</span>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control border-0 search-text-box" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="search" placeholder="Search" value="@ViewData["SearchQuery"]">
                                         </div>
-                                        <input type="text" class="form-control border-0 search-text-box" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Search">
-                                    </div>
+                                    </form>
                                     <ul class="navbar-nav ms-auto mb-lg-0">
                                         <li class="=nav-item me-5 d-flex align-items-center">
                                             <a class="nav-link" style="color:#414141;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -58,6 +60,26 @@
                                             <li class="nav-item me-5 d-flex align-items-center">
                                                 <a class="nav-link" style="color: #414141" asp-area="" asp-controller="Admin" asp-action="History">History</a>
                                             </li>
+                                            <li class="nav-item me-5 d-flex align-items-center">
+                                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="80" height="80" rx="40" fill="#ECF2F6" />
+                                                    <g filter="url(#filter0_d_0_1)">
+                                                        <path d="M50 32H30L38 41.46V48L42 50V41.46L50 32Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                    <defs>
+                                                        <filter id="filter0_d_0_1" x="24" y="29" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                                            <feOffset dy="4" />
+                                                            <feGaussianBlur stdDeviation="2" />
+                                                            <feComposite in2="hardAlpha" operator="out" />
+                                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
+                                                        </filter>
+                                                    </defs>
+                                                </svg>
+                                            </li>
                                         }
                                         else
                                         {
@@ -65,27 +87,6 @@
                                                 <a class="nav-link" style="color:#414141;" asp-area="" asp-controller="User" asp-action="Support">Support</a>
                                             </li>
                                         }
-                                        <li class="nav-item me-5 d-flex align-items-center">
-                                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="80" height="80" rx="40" fill="#ECF2F6" />
-                                                <g filter="url(#filter0_d_0_1)">
-                                                    <path d="M50 32H30L38 41.46V48L42 50V41.46L50 32Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                                                </g>
-                                                <defs>
-                                                    <filter id="filter0_d_0_1" x="24" y="29" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                                        <feOffset dy="4" />
-                                                        <feGaussianBlur stdDeviation="2" />
-                                                        <feComposite in2="hardAlpha" operator="out" />
-                                                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-                                                    </filter>
-                                                </defs>
-                                            </svg>
-
-                                        </li>
                                     </ul>
                                 </div>
                             </div>

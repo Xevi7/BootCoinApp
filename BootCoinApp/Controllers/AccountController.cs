@@ -22,8 +22,12 @@ namespace BootCoinApp.Controllers
             _positionRepository = positionRepository;
         }
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
+            if (_signInManager.IsSignedIn(User))
+            {
+                await _signInManager.SignOutAsync();
+            }
             var response = new LoginViewModel();
             return View(response);
         }

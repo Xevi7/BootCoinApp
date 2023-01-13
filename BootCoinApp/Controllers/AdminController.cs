@@ -1,7 +1,9 @@
-﻿using BootCoinApp.Interfaces;
+﻿using BootCoinApp.Data;
+using BootCoinApp.Interfaces;
 using BootCoinApp.Models;
 using BootCoinApp.ViewModels;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -13,17 +15,29 @@ namespace BootCoinApp.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IUserRepository _userRepository;
         private readonly ITransactionRepository _transactionRepository;
+        
         public AdminController(UserManager<AppUser> userManager, IUserRepository userRepository, ITransactionRepository transactionRepository)
         {
             _userManager = userManager;
             _userRepository = userRepository;
             _transactionRepository = transactionRepository;
         }
+
         [HttpGet]
-        public async Task<IActionResult> Input()
+        [Authorize(Roles = UserRoles.admin)]
+        public async Task<IActionResult> Input(string search)
         {
             string id = _userManager.GetUserId(User);
-            IEnumerable<AppUser> users = await _userRepository.GetAllInternExceptIdAsync(id);
+            IEnumerable<AppUser> users;
+            if(String.IsNullOrEmpty(search))
+            {
+                users = await _userRepository.GetAllInternExceptIdAsync(id);
+            }
+            else
+            {
+                users = await _userRepository.SearchInternExceptIdAsync(id, search);
+                ViewData["SearchQuery"] = search;
+            }
             AppUser CurrentUser = await _userRepository.GetByIdAsync(id);
             var model = new IndexHomeViewModel
             {
@@ -35,6 +49,7 @@ namespace BootCoinApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = UserRoles.admin)]
         public IActionResult InputCoinPerUser(int totalCoins, String events, String activeness)
         {
             ViewBag.TotalCoins = totalCoins;
@@ -44,6 +59,7 @@ namespace BootCoinApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = UserRoles.admin)]
         public IActionResult InputCoinPerGroup(string group, int totalCoins, String events, String activeness)
         {
             ViewBag.Group = group;
@@ -54,10 +70,20 @@ namespace BootCoinApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> History()
+        [Authorize(Roles = UserRoles.admin)]
+        public async Task<IActionResult> History(string search)
         {
             string id = _userManager.GetUserId(User);
-            IEnumerable<Transaction> transactions = await _transactionRepository.GetTransactionsFromIdAsync(id);
+            IEnumerable<Transaction> transactions;
+            if (String.IsNullOrEmpty(search))
+            {
+                transactions = await _transactionRepository.GetTransactionsFromIdAsync(id);
+            }
+            else
+            {
+                transactions = await _transactionRepository.SearchTransactionsFromIdAsync(id, search);
+                ViewData["SearchQuery"] = search;
+            }
             return View(transactions);
         }
 

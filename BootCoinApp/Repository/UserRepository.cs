@@ -24,11 +24,28 @@ namespace BootCoinApp.Repository
         {
             return await (from user in _context.Users
                           join userRole in _context.UserRoles
-                          on user.Id equals userRole.UserId
+                            on user.Id equals userRole.UserId
                           join role in _context.Roles
-                          on userRole.RoleId equals role.Id
+                            on userRole.RoleId equals role.Id
                           where role.Name == "user"
+                          where user.Id != id
                           select user)
+                          .Include(i => i.Group)
+                          .Include(i => i.Position)
+                          .ToListAsync();
+        }
+
+        public async Task<IEnumerable<AppUser>> SearchInternExceptIdAsync(string id, string search)
+        {
+            return await (from user in _context.Users
+                          join userRole in _context.UserRoles
+                            on user.Id equals userRole.UserId
+                          join role in _context.Roles
+                            on userRole.RoleId equals role.Id
+                          where role.Name == "user"
+                          where user.Id != id
+                          select user)
+                          .Where(i => i.UserName.Contains(search))
                           .Include(i => i.Group)
                           .Include(i => i.Position)
                           .ToListAsync();
