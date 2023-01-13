@@ -1,12 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BootCoinApp.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace BootCoinApp.ViewModels
 {
     public class RegisterViewModel
     {
+        public IEnumerable<Group> groupList;
+        public IEnumerable<Position> positionList;
         [Required]
         [DataType(DataType.Text)]
         public string Name { get; set; }
+        [Required]
+        public int GroupId { get; set; }
+        [Required]
+        public int PositionId { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }

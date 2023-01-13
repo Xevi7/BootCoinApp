@@ -46,3 +46,19 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+/* Rules for sizing the material design icons */
+.material-icons.md-44 {
+    font-size: 44px;
+}
+
+.search-text-box {
+    font-size: 24px;
+    font-weight: 400;
+    border-radius: 15px;
+}
+
+.search-text-box-icon {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}

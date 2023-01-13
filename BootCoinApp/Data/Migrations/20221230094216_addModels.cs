@@ -105,7 +105,8 @@ namespace BootCoinApp.Data.Migrations
                         name: "FK_Transactions_AspNetUsers_UsersId",
                         column: x => x.UsersId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transactions_Events_EventId",
                         column: x => x.EventId,

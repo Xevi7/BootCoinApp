@@ -29,4 +29,47 @@ $(document).ready(function () {
             isCollapsing = false
         }, 350)
     })
+
+    // underline navbar items
+    let currRelativeUrl = location.pathname
+    if (currRelativeUrl == '/') {
+        $("[id=index]")
+            .css('border-bottom', '1px solid #414141')
+            .css('padding-bottom', '0')
+    }
+    else {
+        $("[id=index]")
+            .css('border-bottom', '1px solid #FFFFFF')
+            .css('padding-bottom', '0')
+    }
+    if (currRelativeUrl == '/Admin/Input') {
+        $("[id=input]")
+            .css('border-bottom', '1px solid #414141')
+            .css('padding-bottom', '0')
+    }
+    else {
+        $("[id=input]")
+            .css('border-bottom', '1px solid #FFFFFF')
+            .css('padding-bottom', '0')
+    }
+    if (currRelativeUrl == '/Admin/History') {
+        $("[id=history]")
+            .css('border-bottom', '1px solid #414141')
+            .css('padding-bottom', '0')
+    }
+    else {
+        $("[id=support]")
+            .css('border-bottom', '1px solid #FFFFFF')
+            .css('padding-bottom', '0')
+    }
+    if (currRelativeUrl == '/User/Support') {
+        $("[id=support]")
+            .css('border-bottom', '1px solid #414141')
+            .css('padding-bottom', '0')
+    }
+    else {
+        $("[id=support]")
+            .css('border-bottom', '1px solid #FFFFFF')
+            .css('padding-bottom', '0')
+    }
 })

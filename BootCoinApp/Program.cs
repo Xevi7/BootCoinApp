@@ -34,6 +34,7 @@ builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IPositionRepository, PositionRepository>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IActivenessRepository, ActivenessRepository>(); 
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>(); 
 
 var app = builder.Build();
 
@@ -41,6 +42,7 @@ if(args.Length == 1 && args[0].ToLower() == "seeddata")
 {
     Seed.SeedData(app);
     await Seed.SeedUsersAndRolesAsync(app);
+    await Seed.seedTransaction(app);
 }
 
 // Configure the HTTP request pipeline.

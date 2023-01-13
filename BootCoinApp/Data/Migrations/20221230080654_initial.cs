@@ -26,7 +26,7 @@ namespace BootCoinApp.Data.Migrations
                 oldType: "nvarchar(128)",
                 oldMaxLength: 128);
 
-            migrationBuilder.AlterColumn<int>(
+            migrationBuilder.AddColumn<int>(
                 name: "BootCoin",
                 table: "AspNetUsers",
                 type: "int",

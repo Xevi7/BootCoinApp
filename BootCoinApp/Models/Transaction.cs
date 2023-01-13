@@ -9,7 +9,7 @@ namespace BootCoinApp.Models
         public int Id { get; set; }
         [ForeignKey("AppUser")]
         public string UserId { get; set; }
-        public AppUser Users { get; set; }
+        public AppUser User { get; set; }
         [ForeignKey("AppUser")]
         public string ReceiverId { get; set; }
         public AppUser Receiver { get; set; }

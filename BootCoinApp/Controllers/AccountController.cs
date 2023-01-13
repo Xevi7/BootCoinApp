@@ -1,8 +1,10 @@
 ﻿using BootCoinApp.Data;
+using BootCoinApp.Interfaces;
 using BootCoinApp.Models;
 using BootCoinApp.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using static Humanizer.In;
 
 namespace BootCoinApp.Controllers
 {
@@ -10,12 +12,14 @@ namespace BootCoinApp.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        private readonly ApplicationDbContext _context;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInmanager, ApplicationDbContext context)
+        private readonly IGroupRepository _groupRepository;
+        private readonly IPositionRepository _positionRepository;
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInmanager, IGroupRepository groupRepository, IPositionRepository positionRepository)
         {
-            _context = context;
             _signInManager = signInmanager;
             _userManager = userManager;
+            _groupRepository = groupRepository;
+            _positionRepository = positionRepository;
         }
         [HttpGet]
         public IActionResult Login()
@@ -30,7 +34,6 @@ namespace BootCoinApp.Controllers
             if(!ModelState.IsValid) { return View(loginViewModel); }
 
             var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
-            if(user == null) { user = await _userManager.FindByNameAsync(loginViewModel.Email); }
             
             if(user != null) 
             {
@@ -42,18 +45,27 @@ namespace BootCoinApp.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    TempData["Error"] = "Invalid Login Attemp";
+                    TempData["Error"] = "Invalid login attempt";
                     return View(loginViewModel);
                 }
+                TempData["Error"] = "Your Password is either not registered or incorrect";
+                return View(loginViewModel);
             }
-            TempData["Error"] = "Invalid Login Attemp";
+
+            TempData["Error"] = "Your Email is either not registered or incorrect";
             return View(loginViewModel);
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
-            var response = new RegisterViewModel();
+            IEnumerable<Group> groupList = await _groupRepository.GetAll();
+            IEnumerable<Position> positionList = await _positionRepository.GetAll();
+            var response = new RegisterViewModel
+            { 
+                groupList = groupList,
+                positionList = positionList,
+            };
             return View(response);
         }
 
@@ -80,6 +92,8 @@ namespace BootCoinApp.Controllers
             {
                 UserName = registerViewModel.Name,
                 Email = registerViewModel.Email,
+                GroupId = registerViewModel.GroupId,
+                PositionId = registerViewModel.PositionId,
             };
             var response = await _userManager.CreateAsync(newUser, registerViewModel.Password);
 
@@ -88,7 +102,7 @@ namespace BootCoinApp.Controllers
                 await _userManager.AddToRoleAsync(newUser, UserRoles.user);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]
