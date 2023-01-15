@@ -26,7 +26,7 @@ namespace BootCoinApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index(string search, string sortTypes)
         {
             if(!_signInManager.IsSignedIn(HttpContext.User))
             {
@@ -34,13 +34,17 @@ namespace BootCoinApp.Controllers
             }
             string id = _userManager.GetUserId(User);
             IEnumerable<AppUser> users;
+            if (String.IsNullOrEmpty(sortTypes))
+            {
+                sortTypes = "GroupId";
+            }
             if (String.IsNullOrEmpty(search))
             {
-                users = await _userRepository.GetAllInternExceptIdAsync(id);
+                users = await _userRepository.GetAllInternExceptIdAsync(id, sortTypes);
             }
             else
             {
-                users = await _userRepository.SearchInternExceptIdAsync(id, search);
+                users = await _userRepository.SearchInternExceptIdAsync(id, search, sortTypes);
                 ViewData["SearchQuery"] = search;
             }
             AppUser CurrentUser = await _userRepository.GetByIdAsync(id);
@@ -55,6 +59,7 @@ namespace BootCoinApp.Controllers
                 Transaction latestMission = await _transactionRepository.GetLatestTransactionByIdAsync(id);
                 model.latestMission = latestMission;
             }
+            ViewData["SortQuery"] = sortTypes;
             return View(model);
         }
 

@@ -5,7 +5,7 @@ namespace BootCoinApp.Models
 {
     public class AppUser : IdentityUser
     {
-        public string? Picture { get; set; }
+        public string? FullName { get; set; }
         public int? BootCoin { get; set; }
         [ForeignKey("Group")]
         public int GroupId { get; set; }

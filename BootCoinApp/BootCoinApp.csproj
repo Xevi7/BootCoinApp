@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Remove="Interfaces\Transaction.cs" />
+    <Compile Remove="ViewModels\InputFormGroupModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

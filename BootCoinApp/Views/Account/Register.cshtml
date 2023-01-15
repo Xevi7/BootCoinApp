@@ -19,17 +19,23 @@
         <p class="text-center mt-4">BOOTCOIN APP</p>
     </div>
 </div>
-<div class="account-card register-card card login-register-card py-3 position-absolute translate-middle-y">
+<div class="account-card register-card card login-register-card py-3 position-absolute translate-middle-y overflow-auto">
     <div class="card-body">
         <p style="font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.5);">Welcome to Bootcoin Application</p>
         <p style="font-size: 56px; font-weight: 600;">REGISTER</p>
-        @if (TempData["Error"] != null)
+        @if (ViewData["Error"] != null)
         {
             <div class="col-md-12 alert alert-danger">
-                <span>@TempData["Error"]</span>
+                <span>@ViewData["Error"]</span>
             </div>
         }
-        <form asp-action="Register" method="post">
+        else if(ViewData["Success"] != null)
+        {
+            <div class="col-md-12 alert alert-success">
+                <span>@ViewData["Success"]</span>
+            </div>
+        }
+        <form asp-action="Register" method="post" class="position-absolute">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group mb-3">
@@ -38,10 +44,10 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <div class="d-inline-block me-5">
+                <div class="d-inline-block me-5 align-top" style="max-width:min-content;">
                     <label class="mb-2" asp-for="GroupId">Group</label>
                     <select asp-for="GroupId" class="form-select border-0 w-auto pe-5 ps-2 py-2">
-                        <option>Choose Group</option>
+                        <option value="">Choose Group</option>
                         @foreach(var group in Model.groupList)
                         {
                             if(group.Id != 1)
@@ -52,10 +58,10 @@
                     </select>
                     <span asp-validation-for="GroupId" class="text-danger"></span>
                 </div>
-                <div class="d-inline-block ms-3">
+                <div class="d-inline-block ms-3 align-top" style="max-width:min-content;">
                     <label class="mb-2" asp-for="PositionId">Position</label>
                     <select asp-for="PositionId" class="form-select border-0 w-auto p-2 pe-5">
-                        <option>Choose Position</option>
+                        <option value="">Choose Position</option>
                         @foreach(var position in Model.positionList)
                         {
                             if(position.Id != 1)
@@ -64,7 +70,7 @@
                             }
                         }
                     </select>
-                    <span asp-validation-for="PositionId"></span>
+                    <span asp-validation-for="PositionId" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group mb-3">

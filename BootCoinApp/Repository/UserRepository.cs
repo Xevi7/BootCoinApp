@@ -20,40 +20,94 @@ namespace BootCoinApp.Repository
             return await _context.Users.Include(i => i.Group).Include(i => i.Position).ToListAsync();
         }
 
-        public async Task<IEnumerable<AppUser>> GetAllInternExceptIdAsync(string id)
+        public async Task<IEnumerable<AppUser>> GetAllInternExceptIdAsync(string id, string sortTypes)
         {
-            return await (from user in _context.Users
-                          join userRole in _context.UserRoles
-                            on user.Id equals userRole.UserId
-                          join role in _context.Roles
-                            on userRole.RoleId equals role.Id
-                          where role.Name == "user"
-                          where user.Id != id
-                          select user)
+            var users = (from user in _context.Users
+                               join userRole in _context.UserRoles
+                                 on user.Id equals userRole.UserId
+                               join role in _context.Roles
+                                 on userRole.RoleId equals role.Id
+                               where role.Name == "user"
+                               where user.Id != id
+                               select user)
                           .Include(i => i.Group)
-                          .Include(i => i.Position)
-                          .ToListAsync();
+                          .Include(i => i.Position);
+
+            if (sortTypes.Equals("BootCoin"))
+            {
+                return await users.OrderBy(i => i.BootCoin)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
+            else if(sortTypes.Equals("FullName ASC"))
+            {
+                return await users.OrderBy(i => i.FullName)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
+            else if(sortTypes.Equals("FullName DESC"))
+            {
+                return await users.OrderByDescending(i => i.FullName)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
+            else
+            {
+                return await users.OrderBy(i => i.GroupId)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
         }
 
-        public async Task<IEnumerable<AppUser>> SearchInternExceptIdAsync(string id, string search)
+        public async Task<IEnumerable<AppUser>> SearchInternExceptIdAsync(string id, string search, string sortTypes)
         {
-            return await (from user in _context.Users
-                          join userRole in _context.UserRoles
-                            on user.Id equals userRole.UserId
-                          join role in _context.Roles
-                            on userRole.RoleId equals role.Id
-                          where role.Name == "user"
-                          where user.Id != id
-                          select user)
-                          .Where(i => i.UserName.Contains(search))
+            var users = (from user in _context.Users
+                         join userRole in _context.UserRoles
+                           on user.Id equals userRole.UserId
+                         join role in _context.Roles
+                           on userRole.RoleId equals role.Id
+                         where role.Name == "user"
+                         where user.Id != id
+                         select user)
+                          .Where(i => i.FullName.Contains(search))
                           .Include(i => i.Group)
-                          .Include(i => i.Position)
-                          .ToListAsync();
+                          .Include(i => i.Position);
+
+            if (sortTypes.Equals("BootCoin"))
+            {
+                return await users.OrderBy(i => i.BootCoin)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
+            else if (sortTypes.Equals("FullName ASC"))
+            {
+                return await users.OrderBy(i => i.FullName)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
+            else if (sortTypes.Equals("FullName DESC"))
+            {
+                return await users.OrderByDescending(i => i.FullName)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
+            else
+            {
+                return await users.OrderBy(i => i.GroupId)
+                            .ThenBy(i => i.PositionId)
+                            .ToListAsync();
+            }
         }
 
         public async Task<AppUser> GetByIdAsync(string id)
         {
             return await _context.Users.Include(i => i.Group).Include(i => i.Position).FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public bool Update(AppUser user)
+        {
+            _context.Update(user);
+            return save();
         }
 
         public bool save()

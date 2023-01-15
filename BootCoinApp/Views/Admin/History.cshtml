@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "History";
     ViewData["SearchAction"] = "History";
+    ViewData["SortAction"] = "History";
 }
 
 <div class="row mb-3">
@@ -11,12 +12,28 @@
         <span class="d-inline-block w-100 text-gray" style="font-size: 12px;">@Model.Count() Transactions</span>
     </div>
     <div class="col-4 mb-3 d-flex justify-content-end">
-        <a type="button" class="btn btn-success border-0 button py-2 px-4 align-self-center" asp-controller="Admin" asp-action="Export">
-            <span style="vertical-align: middle;">EXPORT</span>
-            <svg class="material-icons ms-3" style="vertical-align: middle;" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.504536 6.05273H16.3493L12.5714 1.29859C12.464 1.1635 12.5609 0.960861 12.7363 0.960861H14.4328C14.6894 0.960861 14.9329 1.07777 15.09 1.2778L19.3837 6.68142C19.8157 7.22698 19.4256 8.02713 18.7265 8.02713H0.504536C0.389339 8.02713 0.295088 7.9336 0.295088 7.81929V6.26056C0.295088 6.14625 0.389339 6.05273 0.504536 6.05273Z" fill="white" />
-            </svg>
-        </a>
+        <form asp-controller="Admin" asp-action="Export" method="get">
+            <input type="hidden" name="search" value="@ViewData["SearchQuery"]" />
+            <input type="hidden" name="sortTypes" value="@ViewData["SortQuery"]" />
+            @if (Model.Count() == 0 && ViewData["SearchQuery"] != null)
+            {
+                <button type="submit" class="btn btn-secondary border-0 button py-2 px-4 align-self-center" disabled>
+                    <span style="vertical-align: middle;">EXPORT</span>
+                    <svg class="material-icons ms-3" style="vertical-align: middle;" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.504536 6.05273H16.3493L12.5714 1.29859C12.464 1.1635 12.5609 0.960861 12.7363 0.960861H14.4328C14.6894 0.960861 14.9329 1.07777 15.09 1.2778L19.3837 6.68142C19.8157 7.22698 19.4256 8.02713 18.7265 8.02713H0.504536C0.389339 8.02713 0.295088 7.9336 0.295088 7.81929V6.26056C0.295088 6.14625 0.389339 6.05273 0.504536 6.05273Z" fill="white" />
+                    </svg>
+                </button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-success border-0 button py-2 px-4 align-self-center">
+                    <span style="vertical-align: middle;">EXPORT</span>
+                    <svg class="material-icons ms-3" style="vertical-align: middle;" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.504536 6.05273H16.3493L12.5714 1.29859C12.464 1.1635 12.5609 0.960861 12.7363 0.960861H14.4328C14.6894 0.960861 14.9329 1.07777 15.09 1.2778L19.3837 6.68142C19.8157 7.22698 19.4256 8.02713 18.7265 8.02713H0.504536C0.389339 8.02713 0.295088 7.9336 0.295088 7.81929V6.26056C0.295088 6.14625 0.389339 6.05273 0.504536 6.05273Z" fill="white" />
+                    </svg>
+                </button>
+            }
+        </form>
     </div>
 </div>
 <div class="row table-fixed-header p-2 me-2">
@@ -26,6 +43,14 @@
     <div class="col-md-2">Position</div>
     <div class="col-md-2">Group</div>
 </div>
+@if(Model.Count() == 0 && ViewData["SearchQuery"] != null)
+    {
+        <div class="row overflow-auto table-fixed-body pe-2">
+            <h1 class="col-md-12 py-5 text-center">
+                Your Search Did Not Match Any Documents
+            </h1>
+        </div>
+    }
 <div class="row overflow-auto table-fixed-body pe-2" style="max-height: 60vh">
     @foreach (var transaction in Model)
     {
@@ -36,7 +61,7 @@
                  class="rounded-circle"
                  width="30"
                  height="30" />
-                <span class="large-text ms-3">@transaction.Receiver.UserName</span>
+                <span class="large-text ms-3">@transaction.Receiver.FullName</span>
             </div>
         </div>
         <div class="col-md-2 py-3">

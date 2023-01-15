@@ -49,20 +49,21 @@ namespace BootCoinApp.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    TempData["Error"] = "Invalid login attempt";
+                    ViewData["Error"] = "Invalid login attempt";
                     return View(loginViewModel);
                 }
-                TempData["Error"] = "Your Password is either not registered or incorrect";
+                ViewData["Error"] = "Your Password is either not registered or incorrect";
                 return View(loginViewModel);
             }
 
-            TempData["Error"] = "Your Email is either not registered or incorrect";
+            ViewData["Error"] = "Your Email is either not registered or incorrect";
             return View(loginViewModel);
         }
 
         [HttpGet]
         public async Task<IActionResult> Register()
         {
+            ViewData["Success"] = TempData["Success"];
             IEnumerable<Group> groupList = await _groupRepository.GetAll();
             IEnumerable<Position> positionList = await _positionRepository.GetAll();
             var response = new RegisterViewModel
@@ -76,28 +77,27 @@ namespace BootCoinApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
+            IEnumerable<Group> groupList = await _groupRepository.GetAll();
+            IEnumerable<Position> positionList = await _positionRepository.GetAll();
+            registerViewModel.groupList = groupList;
+            registerViewModel.positionList = positionList;
             if (!ModelState.IsValid) { return View(registerViewModel); }
 
             var user = await _userManager.FindByEmailAsync(registerViewModel.Email);
             if (user != null)
             {
-                TempData["Error"] = "This email adddress is already in use";
-                return View(registerViewModel);
-            }
-
-            user = await _userManager.FindByNameAsync(registerViewModel.Name);
-            if (user != null)
-            {
-                TempData["Error"] = "This username is already in use";
+                ViewData["Error"] = "This email adddress is already in use";
                 return View(registerViewModel);
             }
 
             var newUser = new AppUser()
             {
-                UserName = registerViewModel.Name,
+                FullName = registerViewModel.Name,
+                UserName = registerViewModel.Email,
                 Email = registerViewModel.Email,
-                GroupId = registerViewModel.GroupId,
-                PositionId = registerViewModel.PositionId,
+                BootCoin = 0,
+                GroupId = Int32.Parse(registerViewModel.GroupId),
+                PositionId = Int32.Parse(registerViewModel.PositionId),
             };
             var response = await _userManager.CreateAsync(newUser, registerViewModel.Password);
 
@@ -105,8 +105,8 @@ namespace BootCoinApp.Controllers
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.user);
             }
-
-            return RedirectToAction("Login", "Account");
+            TempData["Success"] = "Account Registered Successfully";
+            return RedirectToAction("Register", "Account");
         }
 
         [HttpGet]

@@ -20,7 +20,7 @@ namespace BootCoinApp.Repository
 
         public async Task<Group> GetByIdAsync(int id)
         {
-            return await _context.Groups.FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.Groups.Include(i => i.users).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public bool save()

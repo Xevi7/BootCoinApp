@@ -142,7 +142,8 @@ namespace BootCoinApp.Data
                 {
                     var NewAdmin = new AppUser()
                     {
-                        UserName = "Admin1",
+                        FullName = "Admin1",
+                        UserName = "adminBootcoin@gmail.com",
                         Email = "adminBootcoin@gmail.com",
                         GroupId = 1,
                         PositionId = 1,
@@ -158,7 +159,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Nur",
+                        FullName = "Nur",
+                        UserName = "Nur@gmail.com",
                         Email = "Nur@gmail.com",
                         BootCoin = 78,
                         GroupId = 2,
@@ -175,7 +177,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Mega",
+                        FullName = "Mega",
+                        UserName = "Mega@gmail.com",
                         Email = "Mega@gmail.com",
                         BootCoin = 94,
                         GroupId = 2,
@@ -192,7 +195,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Widya",
+                        FullName = "Widya",
+                        UserName = "Widya@gmail.com",
                         Email = "Widya@gmail.com",
                         BootCoin = 92,
                         GroupId = 2,
@@ -209,7 +213,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Yuda",
+                        FullName = "Yuda",
+                        UserName = "Yuda@gmail.com",
                         Email = "Yuda@gmail.com",
                         BootCoin = 93,
                         GroupId = 2,
@@ -226,7 +231,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Danial",
+                        FullName = "Danial",
+                        UserName = "Danial@gmail.com",
                         Email = "Danial@gmail.com",
                         BootCoin = 73,
                         GroupId = 2,
@@ -243,7 +249,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Bima",
+                        FullName = "Bima",
+                        UserName = "Bima@gmail.com",
                         Email = "Bima@gmail.com",
                         BootCoin = 83,
                         GroupId = 2,
@@ -260,7 +267,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Adi",
+                        FullName = "Adi",
+                        UserName = "Adi@gmail.com",
                         Email = "Adi@gmail.com",
                         BootCoin = 79,
                         GroupId = 2,
@@ -277,7 +285,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Surya",
+                        FullName = "Surya",
+                        UserName = "Surya@gmail.com",
                         Email = "Surya@gmail.com",
                         BootCoin = 83,
                         GroupId = 2,
@@ -295,7 +304,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Adriel",
+                        FullName = "Adriel",
+                        UserName = "Adriel@gmail.com",
                         Email = "Adriel@gmail.com",
                         BootCoin = 74,
                         GroupId = 3,
@@ -312,7 +322,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Angie",
+                        FullName = "Angie",
+                        UserName = "Angie@gmail.com",
                         Email = "Angie@gmail.com",
                         BootCoin = 71,
                         GroupId = 3,
@@ -329,7 +340,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Arya",
+                        FullName = "Arya",
+                        UserName = "Arya@gmail.com",
                         Email = "Arya@gmail.com",
                         BootCoin = 88,
                         GroupId = 3,
@@ -346,7 +358,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Andreas",
+                        FullName = "Andreas",
+                        UserName = "Andreas@gmail.com",
                         Email = "Andreas@gmail.com",
                         BootCoin = 72,
                         GroupId = 3,
@@ -363,7 +376,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Dylan",
+                        FullName = "Dylan",
+                        UserName = "Dylan@gmail.com",
                         Email = "Dylan@gmail.com",
                         BootCoin = 85,
                         GroupId = 3,
@@ -380,7 +394,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Excel",
+                        FullName = "Excel",
+                        UserName = "Excel@gmail.com",
                         Email = "Excel@gmail.com",
                         BootCoin = 84,
                         GroupId = 3,
@@ -397,7 +412,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Hanny",
+                        FullName = "Hanny",
+                        UserName = "Hanny@gmail.com",
                         Email = "Hanny@gmail.com",
                         BootCoin = 94,
                         GroupId = 3,
@@ -415,7 +431,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Hanrich",
+                        FullName = "Hanrich",
+                        UserName = "Hanrich@gmail.com",
                         Email = "Hanrich@gmail.com",
                         BootCoin = 88,
                         GroupId = 4,
@@ -432,7 +449,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "James",
+                        FullName = "James",
+                        UserName = "James@gmail.com",
                         Email = "James@gmail.com",
                         BootCoin = 76,
                         GroupId = 4,
@@ -449,7 +467,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Jeta",
+                        FullName = "Jeta",
+                        UserName = "Jeta@gmail.com",
                         Email = "Jeta@gmail.com",
                         BootCoin = 73,
                         GroupId = 4,
@@ -466,7 +485,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Jordan",
+                        FullName = "Jordan",
+                        UserName = "Jordan@gmail.com",
                         Email = "Jordan@gmail.com",
                         BootCoin = 85,
                         GroupId = 4,
@@ -483,7 +503,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Kenny",
+                        FullName = "Kenny",
+                        UserName = "Kenny@gmail.com",
                         Email = "Kenny@gmail.com",
                         BootCoin = 74,
                         GroupId = 4,
@@ -500,7 +521,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Lucas",
+                        FullName = "Lucas",
+                        UserName = "Lucas@gmail.com",
                         Email = "Lucas@gmail.com",
                         BootCoin = 80,
                         GroupId = 4,
@@ -517,7 +539,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Ricky",
+                        FullName = "Ricky",
+                        UserName = "Ricky@gmail.com",
                         Email = "Ricky@gmail.com",
                         BootCoin = 74,
                         GroupId = 4,
@@ -534,7 +557,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Rio",
+                        FullName = "Rio",
+                        UserName = "Rio@gmail.com",
                         Email = "Rio@gmail.com",
                         BootCoin = 82,
                         GroupId = 4,
@@ -552,7 +576,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Susan",
+                        FullName = "Susan",
+                        UserName = "Susan@gmail.com",
                         Email = "Susan@gmail.com",
                         BootCoin = 86,
                         GroupId = 5,
@@ -569,7 +594,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Thomas",
+                        FullName = "Thomas",
+                        UserName = "Thomas@gmail.com",
                         Email = "Thomas@gmail.com",
                         BootCoin = 84,
                         GroupId = 5,
@@ -586,7 +612,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Timotius",
+                        FullName = "Timotius",
+                        UserName = "Timotius@gmail.com",
                         Email = "Timotius@gmail.com",
                         BootCoin = 93,
                         GroupId = 5,
@@ -603,7 +630,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Vincent",
+                        FullName = "Vincent",
+                        UserName = "Vincent@gmail.com",
                         Email = "Vincent@gmail.com",
                         BootCoin = 84,
                         GroupId = 5,
@@ -620,7 +648,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Steven",
+                        FullName = "Steven",
+                        UserName = "Steven@gmail.com",
                         Email = "Steven@gmail.com",
                         BootCoin = 81,
                         GroupId = 5,
@@ -637,7 +666,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Novia",
+                        FullName = "Novia",
+                        UserName = "Novia@gmail.com",
                         Email = "Novia@gmail.com",
                         BootCoin = 73,
                         GroupId = 5,
@@ -654,7 +684,8 @@ namespace BootCoinApp.Data
                 {
                     var NewUser = new AppUser()
                     {
-                        UserName = "Tengku",
+                        FullName = "Tengku",
+                        UserName = "Tengku@gmail.com",
                         Email = "Tengku@gmail.com",
                         BootCoin = 70,
                         GroupId = 5,

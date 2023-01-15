@@ -1,0 +1,72 @@
+﻿@using BootCoinApp.ViewModels
+@model InputFormGroupViewModel
+
+<form asp-action="InputCoinPerGroup" method="post">
+    <div class="row">
+        <input type="hidden" name="search" value="@ViewData["SearchQuery"]" />
+        <input type="hidden" name="sortTypes" value="@ViewData["SortQuery"]" />
+        <div class="mb-4">
+            <label asp-for="groupId" class="form-label mb-2">Group</label>
+            <select asp-for="groupId" class="d-block border-0 p-2"
+                    style="width: 100%"
+                    id="inputGroup">
+                <option value="">Select Group</option>
+                @foreach (var group in Model.groups)
+                {
+                    if (group.Id != 1)
+                    {
+                        <option value="@group.Id">@group.GroupName</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="groupId" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="amount" class="form-label mb-2">Total Coins</label>
+            <input asp-for="amount" class="form-control border-0 py-2"
+                   type="number"
+                   id="inputTotalCoins"
+                   min="1" />
+            <span asp-validation-for="amount" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="eventId" class="form-label mb-2">Events</label>
+            <select asp-for="eventId" class="d-block border-0 p-2"
+                    style="width: 100%"
+                    id="inputEvents">
+                <option value="">Event Category</option>
+                @foreach (var eventCat in Model.events)
+                {
+                    <option value="@eventCat.Id">@eventCat.EventName</option>
+                }
+            </select>
+            <span asp-validation-for="eventId" class="text-danger"></span>
+        </div>
+        <div class="mb-5">
+            <label asp-for="activenessId" class="form-label mb-2">Activeness</label>
+            <select asp-for="activenessId" class="d-block border-0 p-2"
+                    style="width: 100%"
+                    id="inputActiveness">
+                <option value="">Activeness Level</option>
+                @foreach (var activeness in Model.activenesses)
+                {
+                    <option value="@activeness.Id">@activeness.ActivenessName</option>
+                }
+            </select>
+            <span asp-validation-for="activenessId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col d-flex justify-content-between">
+            <button type="reset" class="btn btn-danger border-0 button button-red py-2 px-4">
+                CLEAR
+            </button>
+            <button type="submit" class="btn btn-success border-0 button py-2 px-4">
+                <span style="vertical-align: middle;">SUBMIT</span>
+                <svg class="material-icons ms-3" style="vertical-align: middle;" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.504536 6.05273H16.3493L12.5714 1.29859C12.464 1.1635 12.5609 0.960861 12.7363 0.960861H14.4328C14.6894 0.960861 14.9329 1.07777 15.09 1.2778L19.3837 6.68142C19.8157 7.22698 19.4256 8.02713 18.7265 8.02713H0.504536C0.389339 8.02713 0.295088 7.9336 0.295088 7.81929V6.26056C0.295088 6.14625 0.389339 6.05273 0.504536 6.05273Z" fill="white" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</form>

@@ -5,15 +5,17 @@ namespace BootCoinApp.ViewModels
 {
     public class RegisterViewModel
     {
+        [Required]
         public IEnumerable<Group> groupList;
+        [Required]
         public IEnumerable<Position> positionList;
         [Required]
         [DataType(DataType.Text)]
         public string Name { get; set; }
-        [Required]
-        public int GroupId { get; set; }
-        [Required]
-        public int PositionId { get; set; }
+        [Required(ErrorMessage = "The Group field is required.")]
+        public string GroupId { get; set; }
+        [Required(ErrorMessage = "The Position field is required.")]
+        public string PositionId { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
