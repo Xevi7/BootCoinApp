@@ -120,20 +120,13 @@
                                                                                         @(ViewData["SortQuery"].ToString() == "Date" ? Html.Raw("<option value=\"Date\" selected>Date</option>") : Html.Raw("<option value=\"Date\">Date</option>"))    
                                                                                     }
                                                                                 }
-                                                                                else if(!action.Contains("History"))
-                                                                                {
-                                                                                    <option value="FullName ASC">Name (A-Z)</option>
-                                                                                    <option value="FullName DESC">Name (Z-A)</option>
-                                                                                    <option value="Group" selected>Group</option>
-                                                                                    <option value="BootCoin">Bootcoin</option>
-                                                                                }
                                                                                 else
                                                                                 {
                                                                                     <option value="FullName ASC">Name (A-Z)</option>
                                                                                     <option value="FullName DESC">Name (Z-A)</option>
-                                                                                    <option value="Group">Group</option>
+                                                                                    @(!action.Contains("History") ? Html.Raw("<option value=\"GroupId\" selected>Group</option>") : Html.Raw("<option value=\"GroupId\">Group</option>"))
                                                                                     <option value="BootCoin">Bootcoin</option>
-                                                                                    <option value="Date" selected>Date</option>
+                                                                                    @(!action.Contains("History") ? "" : Html.Raw("<option value=\"Date\" selected>Date</option>"))
                                                                                 }
                                                                             </select>
                                                                         </div>
