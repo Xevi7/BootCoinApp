@@ -22,16 +22,11 @@ namespace BootCoinApp.Repository
                 .Include(i => i.Receiver)
                 .ThenInclude(i => i.Group)
                 .Include(i => i.Receiver)
-                .ThenInclude(i => i.Position);
+                .ThenInclude(i => i.Position)
+                .Include(i => i.Event)
+                .Include(i => i.Activeness);
 
-            if (sortTypes.Equals("BootCoin"))
-            {
-                return await transactions.OrderBy(i => i.Receiver.BootCoin)
-                            .ThenByDescending(i => i.Date)
-                            .ThenByDescending(i => i.Id)
-                            .ToListAsync();
-            }
-            else if (sortTypes.Equals("FullName ASC"))
+            if (sortTypes.Equals("FullName ASC"))
             {
                 return await transactions.OrderBy(i => i.Receiver.FullName)
                             .ThenByDescending(i => i.Date)
@@ -69,16 +64,11 @@ namespace BootCoinApp.Repository
                 .ThenInclude(i => i.Group)
                 .Include(i => i.Receiver)
                 .ThenInclude(i => i.Position)
-                .Where(i => i.Receiver.FullName.Contains(search));
+                .Where(i => i.Receiver.FullName.Contains(search))
+                .Include(i => i.Event)
+                .Include(i => i.Activeness);
 
-            if (sortTypes.Equals("BootCoin"))
-            {
-                return await transactions.OrderBy(i => i.Receiver.BootCoin)
-                            .ThenByDescending(i => i.Date)
-                            .ThenByDescending(i => i.Id)
-                            .ToListAsync();
-            }
-            else if (sortTypes.Equals("FullName ASC"))
+            if (sortTypes.Equals("FullName ASC"))
             {
                 return await transactions.OrderBy(i => i.Receiver.FullName)
                             .ThenByDescending(i => i.Date)

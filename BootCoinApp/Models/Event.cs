@@ -7,6 +7,7 @@ namespace BootCoinApp.Models
         [Key]
         public int Id { get; set; }
         public string EventName { get; set; }
+        public DateTime EventDate { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
     }
 }

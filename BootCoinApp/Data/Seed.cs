@@ -97,19 +97,23 @@ namespace BootCoinApp.Data
                     {
                         new Event()
                         {
-                            EventName = "Pre Mission"
+                            EventName = "Pre Mission",
+                            EventDate = DateTime.ParseExact("02/12/2022", "dd/MM/yyyy", null),
                         },
                         new Event()
                         {
-                            EventName = "Mission 1"
+                            EventName = "Mission 1",
+                            EventDate = DateTime.ParseExact("11/12/2022", "dd/MM/yyyy", null),
                         },
                         new Event()
                         {
-                            EventName = "Mission 2"
+                            EventName = "Mission 2",
+                            EventDate = DateTime.ParseExact("23/12/2022", "dd/MM/yyyy", null),
                         },
                         new Event()
                         {
-                            EventName = "Offline Gathering"
+                            EventName = "Offline Gathering",
+                            EventDate = DateTime.ParseExact("27/12/2022", "dd/MM/yyyy", null),
                         },
                     });
                     context.SaveChanges();
